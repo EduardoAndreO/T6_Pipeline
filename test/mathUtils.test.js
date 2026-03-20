@@ -3,7 +3,7 @@ const { add, subtract, multiply, divide, square } = require('../src/mathUtils');
 describe('Math Utils Functions', () => {
   describe('add', () => {
     test('suma dos números positivos', () => {
-      expect(add(2, 3)).toBe(99);
+      expect(add(2, 3)).toBe(5);
     });
     test('suma un negativo y un positivo', () => {
       expect(add(-1, 5)).toBe(4);
