@@ -24,8 +24,15 @@ Proyecto Node.js con pipeline de integración continua completo usando GitHub Ac
    ```bash
    git clone https://github.com/EduardoAndreO/T6_Pipeline.git
    cd T6_Pipeline
-   2. Instala las dependencias:
+
+2. Instala las dependencias:
 
    ```bash
    npm install
+
+3. Instala las dependencias:
+
+   ```bash
    ## Ejecución
+      npm test
+      npm run lint

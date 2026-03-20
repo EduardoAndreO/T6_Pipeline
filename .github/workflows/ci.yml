@@ -11,18 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Run Linter
-        run: npm run lint
+      - run: npm ci
+      - run: npm run lint
 
   test:
     runs-on: ${{ matrix.os }}
@@ -34,23 +29,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Run Tests with Coverage
-        run: npm test -- --coverage
+      - run: npm ci
+      - run: npm test -- --coverage
       
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == '20'
         with:
-          name: coverage-report-${{ matrix.node-version }}
+          name: coverage-report
           path: coverage/
 
   build:
@@ -58,15 +50,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Run Build
-        run: npm run build
+      - run: npm ci
+      - run: npm run build
